@@ -440,6 +440,10 @@ public final function bool SelectConversationEntry(BioConvWheelPositions nWheelL
     {
         UpdateConversationOptions(oConvCont);
     }
+    else
+    {
+        Class'ESM_API'.static.StartTarget("", oWorldInfo.TimeSeconds, 1);
+    }
     return !bChangingMenu;
 }
 public final function SelectConversationSegment()

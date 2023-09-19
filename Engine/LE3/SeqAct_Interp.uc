@@ -53,6 +53,20 @@ var transient bool m_bSFXStartedUnderCinematicMode;
 var transient bool m_bSFXIsCurrentlyActivating;
 
 // Functions
+public function Activated()
+{
+    local int i;
+    
+    Super(SequenceOp).Activated();
+    bIsSkippable = TRUE;
+    for (i = 0; i < VariableLinks.Length; i++)
+    {
+        if (VariableLinks[i].PropertyName == 'bIsSkippable')
+        {
+            VariableLinks.Remove(i--, 1);
+        }
+    }
+}
 public final native function AddPlayerToDirectorTracks(PlayerController PC);
 
 public static event function int GetObjClassVersion()

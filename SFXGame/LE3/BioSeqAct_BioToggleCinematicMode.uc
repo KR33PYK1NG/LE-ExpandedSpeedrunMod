@@ -53,6 +53,10 @@ public function ToggleCineMode()
         if (oPlayerController != None)
         {
             oPlayerController.OnToggleCinematicMode(Self);
+            if (oPlayerController.bCinematicMode)
+            {
+                Class'ESM_API'.static.StartTarget(PathName(Self), oBioInfo.TimeSeconds, 3);
+            }
         }
     }
 }

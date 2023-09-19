@@ -5,6 +5,15 @@ Class SFXGameModeDreamSequence extends SFXGameModeBase within BioPlayerControlle
 var(SFXGameModeDreamSequence) export SFXCameraMode_Explore ExploreCam;
 
 // Functions
+public exec function ESM_SkipNonConversation()
+{
+    Class'ESM_LE3'.static.SkipNonConversation(Outer);
+}
+public function Initialize()
+{
+    Class'ESM_API'.static.SetupBindings(Self);
+    Super.Initialize();
+}
 public function SFXCameraMode GetCameraMode(SFXCameraMode OldCameraMode, out int PreserveTarget, out float TransitionTime, out SFXCameraMode_Interpolate Transition)
 {
     TransitionTime = 0.0;

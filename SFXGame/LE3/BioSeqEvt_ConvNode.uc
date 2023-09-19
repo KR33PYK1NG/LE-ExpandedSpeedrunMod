@@ -5,6 +5,14 @@ Class BioSeqEvt_ConvNode extends SequenceEvent
 var(BioSeqEvt_ConvNode) int m_nNodeID;
 var(BioSeqEvt_ConvNode) int m_nConvResRefID;
 
+// Functions
+public function Activated()
+{
+    Super(SequenceOp).Activated();
+    Class'ESM_API'.static.StartTarget(PathName(Self), ActivationTime, Class'ESM_API'.default.LastConvId != m_nConvResRefID ? 2 : 0);
+    Class'ESM_API'.default.LastConvId = m_nConvResRefID;
+}
+
 //class default properties can be edited in the Properties tab for the class's Default__ object.
 defaultproperties
 {

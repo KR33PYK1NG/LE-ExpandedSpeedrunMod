@@ -254,6 +254,8 @@ public simulated function PostBeginPlay()
         m_oPropertyEditor.Initialize();
     }
     m_pSubtitles.ClearAllSubtitles();
+    Class'ESM_API'.default.TargetCount = 0;
+    Class'ESM_API'.default.LastConvId = 0;
 }
 public simulated function PreBeginPlay()
 {

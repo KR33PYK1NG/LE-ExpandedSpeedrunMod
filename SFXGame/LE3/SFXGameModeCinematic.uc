@@ -2,6 +2,15 @@ Class SFXGameModeCinematic extends SFXGameModeBase within BioPlayerController
     config(Input);
 
 // Functions
+public exec function ESM_SkipNonConversation()
+{
+    Class'ESM_LE3'.static.SkipNonConversation(Outer);
+}
+public function Initialize()
+{
+    Class'ESM_API'.static.SetupBindings(Self);
+    Super.Initialize();
+}
 public function Activated()
 {
     local Actor A;
