@@ -10,7 +10,7 @@ struct SkipRule
 {
     var string Path;
     var float Delay;
-    var CooldownType Type;
+    var array<CooldownType> Types;
 };
 struct SkipTarget 
 {
@@ -56,22 +56,22 @@ public static function StartTarget(string Path, float Start, CooldownType Type)
 }
 public static function SetupBindings(SFXGameModeBase GameMode)
 {
-    local int i;
+    local int I;
     
     if (((SFXGameModeConversation(GameMode) == None && SFXGameModeCinematic(GameMode) == None) && SFXGameModeMovie(GameMode) == None) && InStr(PathName(GameMode), "SFXGameModeDreamSequence", , , ) == -1)
     {
         return;
     }
-    for (i = 0; i < GameMode.Bindings.Length; i++)
+    for (I = 0; I < GameMode.Bindings.Length; I++)
     {
-        switch (GameMode.Bindings[i].Name)
+        switch (GameMode.Bindings[I].Name)
         {
             case 'MouseScrollUp':
             case 'MouseScrollDown':
             case 'SpaceBar':
             case 'RightMouseButton':
             case 'Escape':
-                GameMode.Bindings.Remove(i--, 1);
+                GameMode.Bindings.Remove(I--, 1);
             default:
         }
     }
@@ -108,16 +108,23 @@ private static final function SkipRule FindApplicableRule(GameSettings Settings)
     local string Path;
     local CooldownType Type;
     local SkipRule Rule;
-    local int i;
+    local int I;
+    local int I2;
     
     Path = Class'ESM_API'.default.CurrentTarget.Path;
     Type = Class'ESM_API'.default.CurrentTarget.Type;
-    for (i = 0; i < Settings.SpecialRules.Length; i++)
+    for (I = 0; I < Settings.SpecialRules.Length; I++)
     {
-        Rule = Settings.SpecialRules[i];
-        if (Path == Rule.Path && int(Type) == int(Rule.Type))
+        Rule = Settings.SpecialRules[I];
+        if (InStr(Path, Rule.Path, , , ) != -1)
         {
-            return Rule;
+            for (I2 = 0; I2 < Rule.Types.Length; I2++)
+            {
+                if (int(Type) == int(Rule.Types[I2]))
+                {
+                    return Rule;
+                }
+            }
         }
     }
     switch (Type)
@@ -137,10 +144,22 @@ private static final function SkipRule FindApplicableRule(GameSettings Settings)
 //class default properties can be edited in the Properties tab for the class's Default__ object.
 defaultproperties
 {
-    DefaultConvNodeRule = {Delay = 0.00999999978, Type = CooldownType.Conversation_Node}
-    DefaultConvReplyRule = {Delay = 0.100000001, Type = CooldownType.Conversation_Reply}
-    DefaultConvStartRule = {Delay = 0.100000001, Type = CooldownType.Conversation_Start}
-    DefaultNonConvStartRule = {Delay = 0.100000001, Type = CooldownType.Non_Conversation_Start}
+    DefaultConvNodeRule = {
+                           Delay = 0.00999999978, 
+                           Types = (CooldownType.Conversation_Node)
+                          }
+    DefaultConvReplyRule = {
+                            Delay = 0.100000001, 
+                            Types = (CooldownType.Conversation_Reply)
+                           }
+    DefaultConvStartRule = {
+                            Delay = 0.100000001, 
+                            Types = (CooldownType.Conversation_Start)
+                           }
+    DefaultNonConvStartRule = {
+                               Delay = 0.100000001, 
+                               Types = (CooldownType.Non_Conversation_Start)
+                              }
     ConvScrollUpBind = {Name = 'MouseScrollUp', Command = "SelectResponse | ESM_SkipConversation"}
     ConvScrollDownBind = {Name = 'MouseScrollDown', Command = "SelectResponse | ESM_SkipConversation"}
     ConvMashBind = {Name = 'SpaceBar', Command = "SelectResponse | ESM_SkipConversation"}
