@@ -252,6 +252,10 @@ public final function bool SelectConversationEntry(BioConvWheelPositions nWheelL
     {
         PlayGuiSound('ConvError');
     }
+    if (!bChangingMenu)
+    {
+        Class'ESM_API'.static.StartTarget("", oBioWorldInfo.TimeSeconds, 1);
+    }
     return !bChangingMenu;
 }
 public final function int MapGuiStyleToOptionMode(EConvGUIStyles eGUIStyle)

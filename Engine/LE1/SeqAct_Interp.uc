@@ -77,6 +77,20 @@ var transient bool m_bBioResetCamData;
 var transient byte PrimePhase;
 
 // Functions
+public function Activated()
+{
+    local int I;
+    
+    Super(SequenceOp).Activated();
+    bIsSkippable = TRUE;
+    for (I = 0; I < VariableLinks.Length; I++)
+    {
+        if (VariableLinks[I].PropertyName == 'bIsSkippable')
+        {
+            VariableLinks.Remove(I--, 1);
+        }
+    }
+}
 public static event function int GetObjClassVersion()
 {
     return Super(SequenceObject).GetObjClassVersion() + 3;

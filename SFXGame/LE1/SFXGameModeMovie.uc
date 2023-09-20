@@ -7,6 +7,15 @@ var(SFXGameModeMovie) export SFXCameraTransition_GalaxyMap InstantTransition;
 var(SFXGameModeMovie) bool bLoadingMovie;
 
 // Functions
+public exec function ESM_SkipNonConversation()
+{
+    Class'ESM_LE1'.static.SkipNonConversation(Outer);
+}
+public function Initialize()
+{
+    Class'ESM_API'.static.SetupBindings(Self);
+    Super.Initialize();
+}
 public exec function SkipMovie()
 {
     if (bLoadingMovie == FALSE)

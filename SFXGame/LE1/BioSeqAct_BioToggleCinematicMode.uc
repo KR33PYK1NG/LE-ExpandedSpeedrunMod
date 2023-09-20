@@ -24,6 +24,10 @@ public function Activated()
     if (!(oPlayerController.bCinematicMode && bForceOn || !oPlayerController.bCinematicMode && bForceOff))
     {
         oPlayerController.OnToggleCinematicMode(Self);
+        if (oPlayerController.bCinematicMode)
+        {
+            Class'ESM_API'.static.StartTarget(PathName(Self), oBioInfo.TimeSeconds, 3);
+        }
         LogInternal("Toggling cinematic mode...", );
     }
     else if (bForceOn)
