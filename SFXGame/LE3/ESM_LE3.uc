@@ -81,6 +81,7 @@ defaultproperties
                 SpecialRules = ({Path = "proear_crashedchopper_v_d.node_data_sequence:bioseqevt_convnode_0", Delay = 1.0, Type = CooldownType.Conversation_Start}, 
                                 {Path = "norkro_summit_m_d.node_data_sequence:bioseqevt_convnode_74", Delay = 0.0, Type = CooldownType.Conversation_Node}, 
                                 {Path = "cat003_csec_executorroom_m_d.node_data_sequence:bioseqevt_convnode_61", Delay = 0.0, Type = CooldownType.Conversation_Node}, 
+                                {Path = "end002_illusive_man_m_d.node_data_sequence:bioseqevt_convnode_108", Delay = 0.0, Type = CooldownType.Conversation_Node}, 
                                 {Path = "end002_illusive_man_dies_m_d.node_data_sequence:bioseqevt_convnode_13", Delay = 0.0, Type = CooldownType.Conversation_Start}, 
                                 {Path = "biod_proear_410survivors.theworld:persistentlevel.main_sequence.seq_crashed_chopper_crew.bioseqact_biotogglecinematicmode_3", Delay = 0.0, Type = CooldownType.Non_Conversation_Start}, 
                                 {Path = "biod_proear_410survivors.theworld:persistentlevel.main_sequence.seq_crashed_chopper_crew.bioseqact_biotogglecinematicmode_4", Delay = 0.0, Type = CooldownType.Non_Conversation_Start}, 
@@ -94,7 +95,10 @@ defaultproperties
                                 {Path = "biod_gth002_300chase.theworld:persistentlevel.main_sequence.matinee_chase.posses_turret.bioseqact_biotogglecinematicmode_0", Delay = 0.0, Type = CooldownType.Non_Conversation_Start}, 
                                 {Path = "biod_cat002_100intro.theworld:persistentlevel.main_sequence.shuttle_landing.bioseqact_biotogglecinematicmode_5", Delay = 0.0, Type = CooldownType.Non_Conversation_Start}, 
                                 {Path = "biod_end001_485shepspeech.theworld:persistentlevel.main_sequence.bioseqact_biotogglecinematicmode_3", Delay = 1.0, Type = CooldownType.Non_Conversation_Start}, 
-                                {Path = "biod_end002_300timconflict.theworld:persistentlevel.main_sequence.seq_arms_open.bioseqact_biotogglecinematicmode_0", Delay = 2.0, Type = CooldownType.Non_Conversation_Start}
+                                {Path = "biod_end002_300timconflict.theworld:persistentlevel.main_sequence.seq_arms_open.bioseqact_biotogglecinematicmode_0", Delay = 2.0, Type = CooldownType.Non_Conversation_Start}, 
+                                {Path = "biod_end002_510red.theworld:persistentlevel.main_sequence.bioseqact_biotogglecinematicmode_0", Delay = 0.0, Type = CooldownType.Non_Conversation_Start}, 
+                                {Path = "biod_end002_520blue.theworld:persistentlevel.main_sequence.bioseqact_biotogglecinematicmode_1", Delay = 0.0, Type = CooldownType.Non_Conversation_Start}, 
+                                {Path = "biod_end002_530green.theworld:persistentlevel.main_sequence.bioseqact_biotogglecinematicmode_0", Delay = 0.0, Type = CooldownType.Non_Conversation_Start}
                                )
                }
 }
