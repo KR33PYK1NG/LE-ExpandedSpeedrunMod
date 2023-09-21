@@ -3,7 +3,6 @@ Class ESM_API;
 // Types
 struct GameSettings 
 {
-    var int TargetThreshold;
     var array<SkipRule> SpecialRules;
 };
 struct SkipRule 
@@ -40,7 +39,6 @@ var KeyBind NonConvScrollDownBind;
 var KeyBind NonConvMashBind;
 var KeyBind NonConvHoldBind;
 var SkipTarget CurrentTarget;
-var int TargetCount;
 var int LastConvId;
 
 // Functions
@@ -52,26 +50,25 @@ public static function StartTarget(string Path, float Start, CooldownType Type)
     }
     Class'ESM_API'.default.CurrentTarget.Start = Start;
     Class'ESM_API'.default.CurrentTarget.Type = Type;
-    Class'ESM_API'.default.TargetCount++;
 }
 public static function SetupBindings(SFXGameModeBase GameMode)
 {
-    local int I;
+    local int i;
     
     if (((SFXGameModeConversation(GameMode) == None && SFXGameModeCinematic(GameMode) == None) && SFXGameModeMovie(GameMode) == None) && InStr(PathName(GameMode), "SFXGameModeDreamSequence", , , ) == -1)
     {
         return;
     }
-    for (I = 0; I < GameMode.Bindings.Length; I++)
+    for (i = 0; i < GameMode.Bindings.Length; i++)
     {
-        switch (GameMode.Bindings[I].Name)
+        switch (GameMode.Bindings[i].Name)
         {
             case 'MouseScrollUp':
             case 'MouseScrollDown':
             case 'SpaceBar':
             case 'RightMouseButton':
             case 'Escape':
-                GameMode.Bindings.Remove(I--, 1);
+                GameMode.Bindings.Remove(i--, 1);
             default:
         }
     }
@@ -95,10 +92,6 @@ public static function bool CanSkip(float TimeSeconds, GameSettings Settings)
     local float Start;
     local SkipRule Rule;
     
-    if (TimeSeconds < 3.0 && Class'ESM_API'.default.TargetCount < Settings.TargetThreshold)
-    {
-        return FALSE;
-    }
     Start = Class'ESM_API'.default.CurrentTarget.Start;
     Rule = FindApplicableRule(Settings);
     return Rule.Delay != 0.0 && TimeSeconds - Start > Rule.Delay;
@@ -108,14 +101,14 @@ private static final function SkipRule FindApplicableRule(GameSettings Settings)
     local string Path;
     local CooldownType Type;
     local SkipRule Rule;
-    local int I;
+    local int i;
     local int I2;
     
     Path = Class'ESM_API'.default.CurrentTarget.Path;
     Type = Class'ESM_API'.default.CurrentTarget.Type;
-    for (I = 0; I < Settings.SpecialRules.Length; I++)
+    for (i = 0; i < Settings.SpecialRules.Length; i++)
     {
-        Rule = Settings.SpecialRules[I];
+        Rule = Settings.SpecialRules[i];
         if (InStr(Path, Rule.Path, , , ) != -1)
         {
             for (I2 = 0; I2 < Rule.Types.Length; I2++)
