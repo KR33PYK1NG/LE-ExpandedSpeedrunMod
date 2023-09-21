@@ -60,7 +60,6 @@ public static function SkipNonConversation(BioPlayerController Player)
 defaultproperties
 {
     Settings = {
-                TargetThreshold = 1, 
                 SpecialRules = ({
                                  Path = "nor10_backgrounds_n.node_data_sequence:bioseqevt_convnode_9", 
                                  Delay = 24.0, 

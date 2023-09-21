@@ -484,7 +484,6 @@ public event simulated function BioBeginPlay()
     {
         m_oPropertyEditor.Initialize();
     }
-    Class'ESM_API'.default.TargetCount = 0;
     Class'ESM_API'.default.LastConvId = 0;
 }
 public native function bool IsAbleToSave(optional out string sReason);

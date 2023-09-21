@@ -9,7 +9,20 @@ var transient bool m_bSetWaitFlags;
 // Functions
 public function Activated()
 {
+    local BioWorldInfo World;
+    local BioPlayerController Player;
+    
     Super(SequenceOp).Activated();
+    World = BioWorldInfo(GetWorldInfo());
+    if (World == None)
+    {
+        return;
+    }
+    Player = World.GetLocalPlayerController();
+    if ((Player == None || Player.GameModeManager == None) || Player.GameModeManager.CurrentMode != EGameModes.GameMode_Conversation)
+    {
+        return;
+    }
     Class'ESM_API'.static.StartTarget(PathName(Self), ActivationTime, Class'ESM_API'.default.LastConvId != m_nConvResRefID ? 2 : 0);
     Class'ESM_API'.default.LastConvId = m_nConvResRefID;
 }
