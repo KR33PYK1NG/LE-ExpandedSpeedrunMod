@@ -5,6 +5,15 @@ Class SFXGameModeMovie extends SFXGameModeBase within BioPlayerController
 var(SFXGameModeMovie) bool bLoadingMovie;
 
 // Functions
+public exec function ESM_SkipNonConversation()
+{
+    Class'ESM_LE2'.static.SkipNonConversation(Outer);
+}
+public function Initialize()
+{
+    Class'ESM_API'.static.SetupBindings(Self);
+    Super.Initialize();
+}
 public exec function SkipMovie()
 {
     if (bLoadingMovie == FALSE)

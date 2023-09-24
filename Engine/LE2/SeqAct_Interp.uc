@@ -53,6 +53,20 @@ var transient bool m_bBioSkipToEnd;
 var transient bool m_bBioHACK_StopPinFired;
 
 // Functions
+public function Activated()
+{
+    local int I;
+    
+    Super(SequenceOp).Activated();
+    bIsSkippable = TRUE;
+    for (I = 0; I < VariableLinks.Length; I++)
+    {
+        if (VariableLinks[I].PropertyName == 'bIsSkippable')
+        {
+            VariableLinks.Remove(I--, 1);
+        }
+    }
+}
 public static event function int GetObjClassVersion()
 {
     return Super(SequenceObject).GetObjClassVersion() + 3;

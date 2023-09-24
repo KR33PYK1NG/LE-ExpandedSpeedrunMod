@@ -248,6 +248,7 @@ public simulated function PostBeginPlay()
         m_oPropertyEditor.Initialize();
     }
     GetSubtitles();
+    Class'ESM_API'.default.LastConvId = 0;
 }
 public event function bool CheckState(int nState)
 {

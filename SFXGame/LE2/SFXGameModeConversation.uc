@@ -6,6 +6,15 @@ var(SFXGameModeConversation) export BioCameraBehaviorConversation ConversationCa
 var(SFXGameModeConversation) export SFXCameraTransition_GalaxyMap InstantTransition;
 
 // Functions
+public exec function ESM_SkipConversation()
+{
+    Class'ESM_LE2'.static.SkipConversation(Outer);
+}
+public function Initialize()
+{
+    Class'ESM_API'.static.SetupBindings(Self);
+    Super.Initialize();
+}
 public exec function HighlightDefaultResponse()
 {
     local MassEffectGuiManager GuiMan;
