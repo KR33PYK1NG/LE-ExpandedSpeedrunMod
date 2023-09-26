@@ -9,17 +9,8 @@ var transient bool m_bSetWaitFlags;
 // Functions
 public function Activated()
 {
-    local BioWorldInfo World;
-    local BioPlayerController Player;
-    
     Super(SequenceOp).Activated();
-    World = BioWorldInfo(GetWorldInfo());
-    if (World == None)
-    {
-        return;
-    }
-    Player = World.GetLocalPlayerController();
-    if ((Player == None || Player.GameModeManager == None) || Player.GameModeManager.CurrentMode != EGameModes.GameMode_Conversation)
+    if (InStr(Locs(PathName(Self)), "_a_d.", , , ) != -1)
     {
         return;
     }

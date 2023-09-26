@@ -46,6 +46,10 @@ public static function SkipNonConversation(BioPlayerController Player)
     {
         return;
     }
+    if (Player.GameModeManager.CurrentMode == EGameModes.GameMode_Movie && Class'ESM_API'.default.CurrentTarget.Type != CooldownType.Non_Conversation_Start)
+    {
+        return;
+    }
     World = BioWorldInfo(Player.WorldInfo);
     if (World == None || !Class'ESM_API'.static.CanSkip(World.TimeSeconds, Class'ESM_LE1'.default.Settings))
     {
@@ -116,7 +120,7 @@ defaultproperties
                                  Types = (CooldownType.Non_Conversation_Start)
                                 }, 
                                 {
-                                 Path = "bioa_ice60_12_dsg.theworld:persistentlevel.main_sequence.level_events.play_queen_cutscene.bioseqact_biotogglecinematicmode_1", 
+                                 Path = "bioa_ice60_12_dsg.theworld:persistentlevel.main_sequence.level_events.play_", 
                                  Delay = 1.0, 
                                  Types = (CooldownType.Non_Conversation_Start)
                                 }, 
