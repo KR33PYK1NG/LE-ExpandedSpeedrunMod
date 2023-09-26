@@ -63,6 +63,10 @@ public static function SkipNonConversation(BioPlayerController Player)
     {
         return;
     }
+    if (Player.GameModeManager2.CurrentMode == EGameModes.GameMode_Movie && Class'ESM_API'.default.CurrentTarget.Type != CooldownType.Non_Conversation_Start)
+    {
+        return;
+    }
     World = BioWorldInfo(Player.WorldInfo);
     if ((World == None || !Class'ESM_API'.static.CanSkip(World.TimeSeconds, Class'ESM_LE3'.default.Settings)) || Player.GameModeManager2.CurrentMode == EGameModes.GameMode_DreamSequence && Class'ESM_API'.default.CurrentTarget.Path != "biod_nor_600cat4intro.theworld:persistentlevel.main_sequence.dream03.bioseqact_biotogglecinematicmode_1")
     {

@@ -8,17 +8,8 @@ var(BioSeqEvt_ConvNode) int m_nConvResRefID;
 // Functions
 public function Activated()
 {
-    local BioWorldInfo World;
-    local BioPlayerController Player;
-    
     Super(SequenceOp).Activated();
-    World = BioWorldInfo(GetWorldInfo());
-    if (World == None)
-    {
-        return;
-    }
-    Player = World.GetLocalPlayerController();
-    if ((Player == None || Player.GameModeManager2 == None) || Player.GameModeManager2.CurrentMode != EGameModes.GameMode_Conversation)
+    if (InStr(Locs(PathName(Self)), "_a_d.", , , ) != -1)
     {
         return;
     }
