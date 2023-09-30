@@ -16,11 +16,11 @@ public function Activated()
     
     oBioInfo = BioWorldInfo(GetWorldInfo());
     oPlayerController = oBioInfo.GetLocalPlayerController();
-    oPlayerController.OnToggleCinematicMode(Self);
-    if (oPlayerController.bCinematicMode)
+    if (InputLinks[0].bHasImpulse || InputLinks[2].bHasImpulse && !oPlayerController.bCinematicMode)
     {
         Class'ESM_API'.static.StartTarget(PathName(Self), oBioInfo.TimeSeconds, 3);
     }
+    oPlayerController.OnToggleCinematicMode(Self);
     if (bCinematicInputMode)
     {
         oBioInfo.Game.SetGameSpeed(1.0);

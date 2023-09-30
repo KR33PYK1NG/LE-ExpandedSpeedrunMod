@@ -8,10 +8,39 @@ var(BioSeqEvt_ConvNode) int m_nConvResRefID;
 // Functions
 public function Activated()
 {
+    local BioWorldInfo World;
+    local BioConversationController ConvControl;
+    local bool Ignore;
+    local array<SkipRule> Rules;
+    local int i;
+    
     Super(SequenceOp).Activated();
-    if (InStr(Locs(PathName(Self)), "_a_d.", , , ) != -1)
+    World = BioWorldInfo(GetWorldInfo());
+    if (World == None || World.GetConversationManager() == None)
     {
         return;
+    }
+    ConvControl = World.GetConversationManager().GetFullConversation();
+    if (ConvControl == None)
+    {
+        return;
+    }
+    if (ConvControl.IsCurrentlyAmbient())
+    {
+        Ignore = TRUE;
+        Rules = Class'ESM_LE3'.default.Settings.SpecialRules;
+        for (i = 0; i < Rules.Length; i++)
+        {
+            if (InStr(Locs(PathName(Self)), Rules[i].Path, , , ) != -1)
+            {
+                Ignore = FALSE;
+                break;
+            }
+        }
+        if (Ignore)
+        {
+            return;
+        }
     }
     Class'ESM_API'.static.StartTarget(PathName(Self), ActivationTime, Class'ESM_API'.default.LastConvId != m_nConvResRefID ? 2 : 0);
     Class'ESM_API'.default.LastConvId = m_nConvResRefID;

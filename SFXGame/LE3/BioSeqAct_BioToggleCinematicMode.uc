@@ -52,11 +52,11 @@ public function ToggleCineMode()
         oPlayerController = oBioInfo.GetLocalPlayerController();
         if (oPlayerController != None)
         {
-            oPlayerController.OnToggleCinematicMode(Self);
-            if (oPlayerController.bCinematicMode)
+            if (InputLinks[0].bHasImpulse || InputLinks[2].bHasImpulse && !oPlayerController.bCinematicMode)
             {
                 Class'ESM_API'.static.StartTarget(PathName(Self), oBioInfo.TimeSeconds, 3);
             }
+            oPlayerController.OnToggleCinematicMode(Self);
         }
     }
 }
