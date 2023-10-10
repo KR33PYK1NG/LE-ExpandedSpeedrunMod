@@ -75,6 +75,11 @@ defaultproperties
                                  Types = (CooldownType.Conversation_Node)
                                 }, 
                                 {
+                                 Path = "omggra_garrus_intro_d_d.node_data_sequence:bioseqevt_convnode_91", 
+                                 Delay = 1.0, 
+                                 Types = (CooldownType.Conversation_Node)
+                                }, 
+                                {
                                  Path = "prscva_double_cross_d_d.node_data_sequence:bioseqevt_convnode_0", 
                                  Delay = 1.0, 
                                  Types = (CooldownType.Conversation_Reply)
