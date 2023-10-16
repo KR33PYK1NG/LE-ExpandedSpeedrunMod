@@ -381,8 +381,9 @@ public final function SaveGameEx(SFXSaveDescriptor SaveDescriptor)
     
     Class'ESM_LE2'.default.HWWeaponClass = "None";
     Class'ESM_LE2'.default.HWAmmoUsedCount = 0;
-    if (GetCurrentSaveDescriptor().Type == ESFXSaveGameType.SaveGameType_Auto)
+    if (SaveDescriptor.Type == ESFXSaveGameType.SaveGameType_Auto)
     {
+        W = CurrentSaveGame.PlayerRecord.Weapons;
         for (I = W.Length - 1; I >= 0; I--)
         {
             HWWeaponClass = string(W[I].WeaponClassName);
