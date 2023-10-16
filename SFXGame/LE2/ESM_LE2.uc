@@ -88,6 +88,11 @@ defaultproperties
                                  Types = (CooldownType.Conversation_Reply)
                                 }, 
                                 {
+                                 Path = "jnkkga_tankfinal_d_d.node_data_sequence:bioseqevt_convnode_54", 
+                                 Delay = 1.0, 
+                                 Types = (CooldownType.Conversation_Node)
+                                }, 
+                                {
                                  Path = "norcr3_joker_shuttle_d_d.node_data_sequence:bioseqevt_convnode_8", 
                                  Delay = 0.0, 
                                  Types = (CooldownType.Conversation_Node)
