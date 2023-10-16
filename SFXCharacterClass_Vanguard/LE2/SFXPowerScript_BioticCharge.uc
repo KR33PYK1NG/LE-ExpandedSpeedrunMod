@@ -304,7 +304,7 @@ public function bool StartPhase(EBioPowerState ePhase, Actor oCaster, float fDur
     {
         if (m_oTargetToAimAt == None || Pawn(m_oTargetToAimAt) == None)
         {
-            return FALSE;
+            m_oTargetToAimAt = CachedTarget;
         }
         bShouldTick = TRUE;
         BioPawn(oCaster).LeaveCover();
