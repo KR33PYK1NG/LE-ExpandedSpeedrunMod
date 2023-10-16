@@ -113,6 +113,11 @@ defaultproperties
                                  Types = (CooldownType.Non_Conversation_Start)
                                 }, 
                                 {
+                                 Path = "biod_prscva_202jackscell.theworld:persistentlevel.main_sequence.release_jack_from_cryo.jack_escape_cutscene.bioseqact_biotogglecinematicmode_5", 
+                                 Delay = 1.0, 
+                                 Types = (CooldownType.Non_Conversation_Start)
+                                }, 
+                                {
                                  Path = "biod_nor_110debriefleadvixen.theworld:persistentlevel.main_sequence.bioseqact_biotogglecinematicmode_0", 
                                  Delay = 0.0, 
                                  Types = (CooldownType.Non_Conversation_Start)
