@@ -249,6 +249,7 @@ public final function ResumeGame(optional delegate<OnResumeGameComplete> Callbac
     {
         ResumeGameCompleteDelegate = Callback;
         Descriptor = GetCurrentSaveDescriptor();
+        Class'ESM_LE2'.default.LoadRequested = TRUE;
         QueueSaveGameCommand(1, Descriptor, FastResumeGameCallback);
     }
     else if (Callback != None)
@@ -373,6 +374,33 @@ public final function UpdateCurrentSaveGame(SFXSaveDescriptor SaveDescriptor)
 }
 public final function SaveGameEx(SFXSaveDescriptor SaveDescriptor)
 {
+    local array<WeaponSaveRecord> W;
+    local int I;
+    local string HWWeaponClass;
+    local int HWAmmoUsedCount;
+    
+    Class'ESM_LE2'.default.HWWeaponClass = "None";
+    Class'ESM_LE2'.default.HWAmmoUsedCount = 0;
+    if (GetCurrentSaveDescriptor().Type == ESFXSaveGameType.SaveGameType_Auto)
+    {
+        for (I = W.Length - 1; I >= 0; I--)
+        {
+            HWWeaponClass = string(W[I].WeaponClassName);
+            HWAmmoUsedCount = W[I].AmmoUsedCount;
+            if (InStr(HWWeaponClass, "ESM_", , , ) == 0)
+            {
+                Class'ESM_LE2'.default.HWWeaponClass = Right(HWWeaponClass, Len(HWWeaponClass) - 4);
+                Class'ESM_LE2'.default.HWAmmoUsedCount = HWAmmoUsedCount;
+                break;
+            }
+            if (InStr(HWWeaponClass, "SFXHeavyWeapon_", , , ) == 0)
+            {
+                Class'ESM_LE2'.default.HWWeaponClass = HWWeaponClass;
+                Class'ESM_LE2'.default.HWAmmoUsedCount = HWAmmoUsedCount;
+                break;
+            }
+        }
+    }
     QueueSaveGameCommand(2, SaveDescriptor, SaveGameCallback);
 }
 public final function CheckForCorruptCareers()

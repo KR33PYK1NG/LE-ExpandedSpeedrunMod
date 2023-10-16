@@ -375,6 +375,7 @@ public function Callback_ConfirmLoadGame(bool bAPressed, int context)
                     {
                         MassEffectGuiManager(oPanel.oParentManager).GetSaveLoadWidget().ShowLoadingMessage();
                     }
+                    Class'ESM_LE2'.default.LoadRequested = TRUE;
                     Engine.QueueSaveGameCommand(1, SaveList[context].SaveDescriptor, LoadGameCallback);
                 }
             }

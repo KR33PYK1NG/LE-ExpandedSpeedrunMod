@@ -577,8 +577,10 @@ public final function LoadWeapons(SFXPawn_Player Player, out array<WeaponSaveRec
     local SFXInventoryManager InvManager;
     local SFXWeapon Weapon;
     local int Idx;
+    local int Idx2;
     local SFXPower Power;
     local BioPowerScript PowerScript;
+    local int HWAmmoUsedCount;
     
     Player.CreateWeapons(Player.Loadout);
     InvManager = SFXInventoryManager(Player.InvManager);
@@ -589,9 +591,26 @@ public final function LoadWeapons(SFXPawn_Player Player, out array<WeaponSaveRec
             Idx = Records.Find('WeaponClassName', Weapon.Class.Name);
             if (Idx != -1)
             {
-                if (float(Records[Idx].AmmoUsedCount) <= Weapon.GetMagazineSize())
+                HWAmmoUsedCount = Records[Idx].AmmoUsedCount;
+                if (!Class'ESM_LE2'.default.LoadRequested)
                 {
-                    Weapon.AmmoUsedCount = float(Records[Idx].AmmoUsedCount);
+                    Idx2 = Records.Find('WeaponClassName', Name("ESM_" $ Weapon.Class.Name));
+                    if (Idx2 != -1)
+                    {
+                        HWAmmoUsedCount = Records[Idx2].AmmoUsedCount;
+                    }
+                    else
+                    {
+                        Idx2 = Records.Find('WeaponClassName', 'ESM_None');
+                        if (Idx2 != -1)
+                        {
+                            HWAmmoUsedCount = 0;
+                        }
+                    }
+                }
+                if (float(HWAmmoUsedCount) <= Weapon.GetMagazineSize())
+                {
+                    Weapon.AmmoUsedCount = float(HWAmmoUsedCount);
                 }
                 else
                 {
@@ -621,6 +640,7 @@ public final function LoadWeapons(SFXPawn_Player Player, out array<WeaponSaveRec
                 }
             }
         }
+        Class'ESM_LE2'.default.LoadRequested = FALSE;
     }
 }
 public final function LoadPowers(SFXPawn Pawn, out array<PowerSaveRecord> Records)
@@ -896,6 +916,12 @@ public final function SaveWeapons(SFXPawn_Player Player, out array<WeaponSaveRec
                 SaveInfo.bCurrentWeapon = TRUE;
             }
             SaveInfo.AmmoPowerName = Weapon.AmmoPowerName;
+            Records.AddItem(SaveInfo);
+        }
+        if (Class'SFXEngine'.static.GetEngine().GetCurrentSaveDescriptor().Type == ESFXSaveGameType.SaveGameType_Auto)
+        {
+            SaveInfo.WeaponClassName = Name("ESM_" $ Class'ESM_LE2'.default.HWWeaponClass);
+            SaveInfo.AmmoUsedCount = Class'ESM_LE2'.default.HWAmmoUsedCount;
             Records.AddItem(SaveInfo);
         }
     }

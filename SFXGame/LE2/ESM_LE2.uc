@@ -2,6 +2,9 @@ Class ESM_LE2;
 
 // Variables
 var GameSettings Settings;
+var string HWWeaponClass;
+var int HWAmmoUsedCount;
+var bool LoadRequested;
 
 // Functions
 public static function SkipConversation(BioPlayerController Player)
