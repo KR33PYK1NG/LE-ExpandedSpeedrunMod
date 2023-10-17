@@ -328,6 +328,10 @@ public function Callback_ConfirmDeleteCareer(bool bAPressed, int CareerIdx)
 }
 private final function LoadGameCallback(SFXSaveGameCommandEventArgs Args)
 {
+    if (Args.bSuccess)
+    {
+        Class'ESM_LE2'.static.UpdateHeavyAmmo();
+    }
     oPanel.SetInputDisabled(FALSE);
     if (Class'WorldInfo'.static.IsConsoleBuild())
     {

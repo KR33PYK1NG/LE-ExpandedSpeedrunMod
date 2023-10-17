@@ -7,6 +7,38 @@ var int HWAmmoUsedCount;
 var bool LoadRequested;
 
 // Functions
+public static function UpdateHeavyAmmo()
+{
+    local SFXEngine E;
+    local array<WeaponSaveRecord> W;
+    
+    E = Class'SFXEngine'.static.GetEngine();
+    W = E.CurrentSaveGame.PlayerRecord.Weapons;
+    Class'ESM_LE2'.default.HWWeaponClass = "None";
+    Class'ESM_LE2'.default.HWAmmoUsedCount = 0;
+    if (W.Length == 0)
+    {
+        return;
+    }
+    if (E.GetCurrentSaveDescriptor().Type == ESFXSaveGameType.SaveGameType_Auto)
+    {
+        if (InStr(string(W[W.Length - 1].WeaponClassName), "ESM_", , , ) != 0)
+        {
+            return;
+        }
+        Class'ESM_LE2'.default.HWWeaponClass = Right(string(W[W.Length - 1].WeaponClassName), Len(string(W[W.Length - 1].WeaponClassName)) - 4);
+        Class'ESM_LE2'.default.HWAmmoUsedCount = W[W.Length - 1].AmmoUsedCount;
+    }
+    else
+    {
+        if (InStr(string(W[W.Length - 1].WeaponClassName), "SFXHeavyWeapon_", , , ) != 0)
+        {
+            return;
+        }
+        Class'ESM_LE2'.default.HWWeaponClass = string(W[W.Length - 1].WeaponClassName);
+        Class'ESM_LE2'.default.HWAmmoUsedCount = W[W.Length - 1].AmmoUsedCount;
+    }
+}
 public static function SkipConversation(BioPlayerController Player)
 {
     local BioWorldInfo World;

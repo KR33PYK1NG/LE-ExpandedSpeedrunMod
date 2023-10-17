@@ -230,6 +230,7 @@ private final function FastResumeGameCallback(SFXSaveGameCommandEventArgs Args)
 {
     if (Args.bSuccess)
     {
+        Class'ESM_LE2'.static.UpdateHeavyAmmo();
         SlowResumeGameCallback(Args);
     }
     else if (TravelURL == "")
@@ -351,6 +352,7 @@ private final function SaveGameCallback(SFXSaveGameCommandEventArgs Args)
 {
     if (Args.bSuccess)
     {
+        Class'ESM_LE2'.static.UpdateHeavyAmmo();
         UpdateCurrentSaveGame(Args.Descriptor);
     }
     else if (Args.bNeedsFreeSpace && Class'WorldInfo'.static.IsConsoleBuild(2))
@@ -374,34 +376,6 @@ public final function UpdateCurrentSaveGame(SFXSaveDescriptor SaveDescriptor)
 }
 public final function SaveGameEx(SFXSaveDescriptor SaveDescriptor)
 {
-    local array<WeaponSaveRecord> W;
-    local int I;
-    local string HWWeaponClass;
-    local int HWAmmoUsedCount;
-    
-    Class'ESM_LE2'.default.HWWeaponClass = "None";
-    Class'ESM_LE2'.default.HWAmmoUsedCount = 0;
-    if (SaveDescriptor.Type == ESFXSaveGameType.SaveGameType_Auto)
-    {
-        W = CurrentSaveGame.PlayerRecord.Weapons;
-        for (I = W.Length - 1; I >= 0; I--)
-        {
-            HWWeaponClass = string(W[I].WeaponClassName);
-            HWAmmoUsedCount = W[I].AmmoUsedCount;
-            if (InStr(HWWeaponClass, "ESM_", , , ) == 0)
-            {
-                Class'ESM_LE2'.default.HWWeaponClass = Right(HWWeaponClass, Len(HWWeaponClass) - 4);
-                Class'ESM_LE2'.default.HWAmmoUsedCount = HWAmmoUsedCount;
-                break;
-            }
-            if (InStr(HWWeaponClass, "SFXHeavyWeapon_", , , ) == 0)
-            {
-                Class'ESM_LE2'.default.HWWeaponClass = HWWeaponClass;
-                Class'ESM_LE2'.default.HWAmmoUsedCount = HWAmmoUsedCount;
-                break;
-            }
-        }
-    }
     QueueSaveGameCommand(2, SaveDescriptor, SaveGameCallback);
 }
 public final function CheckForCorruptCareers()
