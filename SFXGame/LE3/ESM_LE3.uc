@@ -92,6 +92,11 @@ defaultproperties
                                  Types = (CooldownType.Conversation_Node)
                                 }, 
                                 {
+                                 Path = "cat004_hangar_shuttle_m_d.node_data_sequence:bioseqevt_convnode_40", 
+                                 Delay = 1.0, 
+                                 Types = (CooldownType.Conversation_Start)
+                                }, 
+                                {
                                  Path = "end002_illusive_man_m_d.node_data_sequence:bioseqevt_convnode_108", 
                                  Delay = 0.0, 
                                  Types = (CooldownType.Conversation_Node)
@@ -129,6 +134,11 @@ defaultproperties
                                 {
                                  Path = "biod_nor_110tour.theworld:persistentlevel.main_sequence.dream01.start_stage_2.bioseqact_biotogglecinematicmode_1", 
                                  Delay = 0.0, 
+                                 Types = (CooldownType.Non_Conversation_Start)
+                                }, 
+                                {
+                                 Path = "biod_kro002_100hollows.theworld:persistentlevel.main_sequence.after_level_xn.bioseqact_biotogglecinematicmode_1", 
+                                 Delay = 1.0, 
                                  Types = (CooldownType.Non_Conversation_Start)
                                 }, 
                                 {
