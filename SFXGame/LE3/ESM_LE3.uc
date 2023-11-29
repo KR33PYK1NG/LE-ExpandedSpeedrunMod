@@ -157,6 +157,11 @@ defaultproperties
                                  Types = (CooldownType.Non_Conversation_Start)
                                 }, 
                                 {
+                                 Path = "biod_gth002_320reaperdeath.theworld:persistentlevel.main_sequence.bioseqact_biotogglecinematicmode_1", 
+                                 Delay = 1.0, 
+                                 Types = (CooldownType.Non_Conversation_Start)
+                                }, 
+                                {
                                  Path = "biod_cat002_100intro.theworld:persistentlevel.main_sequence.shuttle_landing.bioseqact_biotogglecinematicmode_5", 
                                  Delay = 0.0, 
                                  Types = (CooldownType.Non_Conversation_Start)
