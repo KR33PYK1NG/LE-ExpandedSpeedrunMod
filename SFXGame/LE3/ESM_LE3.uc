@@ -92,6 +92,11 @@ defaultproperties
                                  Types = (CooldownType.Conversation_Node)
                                 }, 
                                 {
+                                 Path = "gth002_legion_intro_m_d.node_data_sequence:bioseqevt_convnode_54", 
+                                 Delay = 1.0, 
+                                 Types = (CooldownType.Conversation_Start)
+                                }, 
+                                {
                                  Path = "cat004_hangar_shuttle_m_d.node_data_sequence:bioseqevt_convnode_40", 
                                  Delay = 1.0, 
                                  Types = (CooldownType.Conversation_Start)
