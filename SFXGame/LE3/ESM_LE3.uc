@@ -87,6 +87,11 @@ defaultproperties
                                  Types = (CooldownType.Conversation_Start)
                                 }, 
                                 {
+                                 Path = "norpro_tour_m_d.node_data_sequence:bioseqevt_convnode_38", 
+                                 Delay = 2.0, 
+                                 Types = (CooldownType.Conversation_Node)
+                                }, 
+                                {
                                  Path = "cat003_csec_executorroom_m_d.node_data_sequence:bioseqevt_convnode_61", 
                                  Delay = 0.0, 
                                  Types = (CooldownType.Conversation_Node)
