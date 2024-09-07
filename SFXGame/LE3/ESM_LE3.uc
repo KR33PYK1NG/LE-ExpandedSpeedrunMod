@@ -132,6 +132,11 @@ defaultproperties
                                  Types = (CooldownType.Non_Conversation_Start)
                                 }, 
                                 {
+                                 Path = "biod_promar_205aliaraintro.theworld:persistentlevel.main_sequence.liara_introduction.bioseqact_biotogglecinematicmode_2", 
+                                 Delay = 1.0, 
+                                 Types = (CooldownType.Non_Conversation_Start)
+                                }, 
+                                {
                                  Path = "biod_promar_240exteriorwalk.theworld:persistentlevel.main_sequence.airlock_and_helmet.sequencereference_1.ref_playerhelmetcontrol.bioseqact_biotogglecinematicmode_1", 
                                  Delay = 0.0, 
                                  Types = (CooldownType.Non_Conversation_Start)
@@ -172,6 +177,11 @@ defaultproperties
                                  Types = (CooldownType.Non_Conversation_Start)
                                 }, 
                                 {
+                                 Path = "biod_gth002_100landingzone.theworld:persistentlevel.main_sequence.conv_talitalk.bioseqact_biotogglecinematicmode_1", 
+                                 Delay = 0.0, 
+                                 Types = (CooldownType.Non_Conversation_Start)
+                                }, 
+                                {
                                  Path = "biod_gth002_300chase.theworld:persistentlevel.main_sequence.matinee_chase.posses_turret.bioseqact_biotogglecinematicmode_0", 
                                  Delay = 0.0, 
                                  Types = (CooldownType.Non_Conversation_Start)
@@ -183,6 +193,16 @@ defaultproperties
                                 }, 
                                 {
                                  Path = "biod_cat002_100intro.theworld:persistentlevel.main_sequence.shuttle_landing.bioseqact_biotogglecinematicmode_5", 
+                                 Delay = 0.0, 
+                                 Types = (CooldownType.Non_Conversation_Start)
+                                }, 
+                                {
+                                 Path = "biod_cermir_100landing.theworld:persistentlevel.main_sequence.landing_ambient.bioseqact_biotogglecinematicmode_5", 
+                                 Delay = 1.0, 
+                                 Types = (CooldownType.Non_Conversation_Start)
+                                }, 
+                                {
+                                 Path = "bioa_cat004_000leveltrans.theworld:persistentlevel.main_sequence.bioseqact_biotogglecinematicmode_0", 
                                  Delay = 0.0, 
                                  Types = (CooldownType.Non_Conversation_Start)
                                 }, 
